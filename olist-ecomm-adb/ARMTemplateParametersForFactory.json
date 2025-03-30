@@ -1,0 +1,30 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "olist-ecomm-adb"
+		},
+		"MySqlLinkedService_password": {
+			"value": ""
+		},
+		"adlsCSVLinkedService_accountKey": {
+			"value": ""
+		},
+		"MySqlLinkedService_properties_typeProperties_server": {
+			"value": "localhost"
+		},
+		"MySqlLinkedService_properties_typeProperties_database": {
+			"value": "olist_ecommerce"
+		},
+		"MySqlLinkedService_properties_typeProperties_username": {
+			"value": "root"
+		},
+		"adlsCSVLinkedService_properties_typeProperties_url": {
+			"value": "https://olistecommadlsgen2.dfs.core.windows.net/"
+		},
+		"httpGithubLinkedService_properties_typeProperties_url": {
+			"value": "https://raw.githubusercontent.com/ketansonawane/"
+		}
+	}
+}
