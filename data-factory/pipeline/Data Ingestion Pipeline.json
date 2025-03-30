@@ -1,0 +1,126 @@
+{
+	"name": "Data Ingestion Pipeline",
+	"properties": {
+		"activities": [
+			{
+				"name": "ForEachFile",
+				"type": "ForEach",
+				"dependsOn": [],
+				"typeProperties": {
+					"items": {
+						"value": "@pipeline().parameters.forEachInputArray",
+						"type": "Expression"
+					},
+					"isSequential": true,
+					"activities": [
+						{
+							"name": "Copy Inside For Each",
+							"type": "Copy",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "DelimitedTextSource",
+									"storeSettings": {
+										"type": "HttpReadSettings",
+										"requestMethod": "GET"
+									},
+									"formatSettings": {
+										"type": "DelimitedTextReadSettings"
+									}
+								},
+								"sink": {
+									"type": "DelimitedTextSink",
+									"storeSettings": {
+										"type": "AzureBlobFSWriteSettings"
+									},
+									"formatSettings": {
+										"type": "DelimitedTextWriteSettings",
+										"quoteAllText": true,
+										"fileExtension": ".csv"
+									}
+								},
+								"enableStaging": false,
+								"translator": {
+									"type": "TabularTranslator",
+									"typeConversion": true,
+									"typeConversionSettings": {
+										"allowDataTruncation": true,
+										"treatBooleanAsNumber": false
+									}
+								}
+							},
+							"inputs": [
+								{
+									"referenceName": "githubDataset",
+									"type": "DatasetReference",
+									"parameters": {
+										"csv_relative_url": {
+											"value": "@item().csv_relative_url",
+											"type": "Expression"
+										}
+									}
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "adlsCSVDataset",
+									"type": "DatasetReference",
+									"parameters": {
+										"file_name": {
+											"value": "@item().file_name",
+											"type": "Expression"
+										}
+									}
+								}
+							]
+						}
+					]
+				}
+			}
+		],
+		"parameters": {
+			"forEachInputArray": {
+				"type": "array",
+				"defaultValue": [
+					{
+						"csv_relative_url": "olist-ecommerce-azure-data-engineering-project/refs/heads/main/dataset/olist_customers_dataset.csv",
+						"file_name": "olist_customers_dataset.csv"
+					},
+					{
+						"csv_relative_url": "olist-ecommerce-azure-data-engineering-project/refs/heads/main/dataset/olist_geolocation_dataset.csv",
+						"file_name": "olist_geolocation_dataset.csv"
+					},
+					{
+						"csv_relative_url": "olist-ecommerce-azure-data-engineering-project/refs/heads/main/dataset/olist_order_items_dataset.csv",
+						"file_name": "olist_order_items_dataset.csv"
+					},
+					{
+						"csv_relative_url": "olist-ecommerce-azure-data-engineering-project/refs/heads/main/dataset/olist_order_reviews_dataset.csv",
+						"file_name": "olist_order_reviews_dataset.csv"
+					},
+					{
+						"csv_relative_url": "olist-ecommerce-azure-data-engineering-project/refs/heads/main/dataset/olist_orders_dataset.csv",
+						"file_name": "olist_orders_dataset.csv"
+					},
+					{
+						"csv_relative_url": "olist-ecommerce-azure-data-engineering-project/refs/heads/main/dataset/olist_products_dataset.csv",
+						"file_name": "olist_products_dataset.csv"
+					},
+					{
+						"csv_relative_url": "olist-ecommerce-azure-data-engineering-project/refs/heads/main/dataset/olist_sellers_dataset.csv",
+						"file_name": "olist_sellers_dataset.csv"
+					}
+				]
+			}
+		},
+		"annotations": []
+	}
+}
