@@ -1,0 +1,12 @@
+{
+	"name": "githubLinkedService",
+	"properties": {
+		"annotations": [],
+		"type": "HttpServer",
+		"typeProperties": {
+			"url": "https://raw.githubusercontent.com/ketansonawane/olist-ecommerce-azure-data-engineering-project/refs/heads/main",
+			"enableServerCertificateValidation": true,
+			"authenticationType": "Anonymous"
+		}
+	}
+}
