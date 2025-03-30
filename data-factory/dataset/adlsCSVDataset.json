@@ -20,7 +20,7 @@
 					"type": "Expression"
 				},
 				"folderPath": "bronze",
-				"fileSystem": "olistdata"
+				"fileSystem": "olist-ecomm-data"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",

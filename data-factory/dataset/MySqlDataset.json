@@ -1,0 +1,15 @@
+{
+	"name": "MySqlDataset",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "MySqlLinkedService",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "MySqlTable",
+		"schema": [],
+		"typeProperties": {
+			"tableName": "`olist_order_payments`"
+		}
+	}
+}
