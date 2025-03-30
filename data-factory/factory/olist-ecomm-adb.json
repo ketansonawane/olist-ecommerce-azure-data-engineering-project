@@ -1,0 +1,9 @@
+{
+	"name": "olist-ecomm-adb",
+	"location": "centralindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "e24d1431-5295-4300-87e6-d5a089085071",
+		"tenantId": "8c0bc3dd-398c-4bc1-b727-ba8a8ee7c1a4"
+	}
+}
