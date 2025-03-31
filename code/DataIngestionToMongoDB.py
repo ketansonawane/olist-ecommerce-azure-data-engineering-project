@@ -12,7 +12,11 @@ except FileNotFoundError:
     exit()  # Exit the script if the file is not found
 
 # MongoDB connection string
-conn_string = "mongodb+srv://sonawaneketan1993:Br4Bvpx6ytt0MQb2@olist-ecomm-cluster.qmqybdb.mongodb.net/"
+username = "sonawaneketan1993"
+password = "Br4Bvpx6ytt0MQb2"
+database = "olist_ecommerce"
+collection_name = "product_category_name_translation"
+conn_string = f"mongodb+srv://{username}:{password}@olist-ecomm-cluster.qmqybdb.mongodb.net/"
 
 try:
     # Step 1: Establish a connection to MongoDB server
@@ -20,10 +24,10 @@ try:
     print("Connection established successfully to MongoDB Database")
 
     # Step 2: Create a database
-    db = client['olist_ecommerce']
+    db = client[database]
 
     # Step 3: Create a collection
-    collection = db['product_category_name_translation']
+    collection = db[collection_name]
     print("Collection `product_category_name_translation` created successfully!")
 
     # Step 4: Insert data into the collection
