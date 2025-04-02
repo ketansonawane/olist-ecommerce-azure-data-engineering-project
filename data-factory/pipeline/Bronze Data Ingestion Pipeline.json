@@ -1,5 +1,5 @@
 {
-	"name": "Data Ingestion Pipeline",
+	"name": "Bronze Data Ingestion Pipeline",
 	"properties": {
 		"activities": [
 			{
@@ -148,7 +148,7 @@
 						"referenceName": "adlsCSVDataset",
 						"type": "DatasetReference",
 						"parameters": {
-							"file_name": "olist_order_payments"
+							"file_name": "olist_order_payments.csv"
 						}
 					}
 				]
